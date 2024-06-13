@@ -4,7 +4,7 @@ import { VscGithub } from "react-icons/vsc";
 
 const Projects = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4">
+    <div className="pb-24">
       <h2 className="my-20 text-center text-4xl">Projects</h2>
       <div>
         {PROJECTS.map((project, index) => (

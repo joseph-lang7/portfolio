@@ -4,6 +4,7 @@ import Hero from "./components/hero/hero";
 import About from "./components/about/about";
 import Technologies from "./components/technologies/technologies";
 import Projects from "./components/projects/projects";
+import Contact from "./components/contact/contact";
 function App() {
   return (
     <div className=" text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
@@ -16,6 +17,7 @@ function App() {
         <About />
         <Technologies />
         <Projects />
+        <Contact />
       </div>
     </div>
   );
