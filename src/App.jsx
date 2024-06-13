@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./components/navbar/nav-bar";
 import Hero from "./components/hero/hero";
+import About from "./components/about/about";
 function App() {
   return (
     <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
@@ -9,6 +10,7 @@ function App() {
         <div className="container mx-auto px-9">
           <Navbar />
           <Hero />
+          <About />
         </div>
       </div>
     </div>
