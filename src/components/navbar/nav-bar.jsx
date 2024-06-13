@@ -17,14 +17,14 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        isScrolled ? "bg-black bg-opacity-55" : "bg-transparent"
-      } mb-20 flex items-center justify-between py-3 w-full fixed top-0 transition-all duration-500`}
+        isScrolled ? "bg-black bg-opacity-80" : "bg-transparent"
+      } mb-20 flex items-center justify-between py-3 w-full fixed top-0 transition-all duration-500 z-50`}
     >
       <div className="container mx-auto px-9 flex items-center justify-between">
         <div className="flex flex-shrink-0 items-center">
           <img className="w-[80px]" src={Logo} alt="logo" />
         </div>
-        <div className="m-8 flex items-center justify-center gap-4 text-2xl">
+        <div className="flex items-center justify-center gap-4 text-2xl">
           <a
             className="hover:text-neutral-500 transition-colors duration-500"
             target="_blank"
