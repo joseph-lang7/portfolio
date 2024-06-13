@@ -9,10 +9,19 @@ const Contact = () => {
   const { errors, isSubmitSuccessful } = formState;
 
   const onSubmit = async (data) => {
+    setClientName(data.fullName);
     try {
-      setClientName(data.fullName);
-      console.log("Form submitted", data);
-      reset();
+      const fetchOptions = {
+        method: "POST",
+        body: new URLSearchParams(data).toString(),
+        headers: {
+          "Content-Type": "Applications/x-www-form-urlencoded",
+        },
+      };
+      const res = await fetch("/", fetchOptions);
+      if (res.ok) {
+        reset();
+      }
     } catch (error) {
       console.error(error);
     }
@@ -35,10 +44,10 @@ const Contact = () => {
       )}
 
       <form
-        method="POST"
         className="flex w-full justify-center flex-col gap-5 items-center"
         noValidate
         name="contact-form"
+        data-netlify="true"
         onSubmit={handleSubmit(onSubmit)}
       >
         <input type="hidden" name="bot-field" />
