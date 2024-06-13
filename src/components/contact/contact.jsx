@@ -1,11 +1,19 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 const Contact = () => {
   const [focusName, setFocusName] = useState(false);
   const [focusEmail, setFocusEmail] = useState(false);
   const [focusMessage, setFocusMessage] = useState(false);
   return (
     <div className=" pb-24">
-      <h2 className="my-20 text-center text-4xl">Contact</h2>
+      <motion.h2
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
+        className="my-20 text-center text-4xl"
+      >
+        Contact
+      </motion.h2>
       <form
         action=""
         className="flex w-full justify-center flex-col gap-5 items-center"
