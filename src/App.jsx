@@ -3,6 +3,7 @@ import Navbar from "./components/navbar/nav-bar";
 import Hero from "./components/hero/hero";
 import About from "./components/about/about";
 import Technologies from "./components/technologies/technologies";
+import Projects from "./components/projects/projects";
 function App() {
   return (
     <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
@@ -14,6 +15,7 @@ function App() {
         <Hero />
         <About />
         <Technologies />
+        <Projects />
       </div>
     </div>
   );
