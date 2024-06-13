@@ -1,9 +1,19 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+
 const Contact = () => {
+  const form = useForm();
+  const { register, handleSubmit, reset, formState } = form;
+  const { errors } = formState;
   const [focusName, setFocusName] = useState(false);
   const [focusEmail, setFocusEmail] = useState(false);
   const [focusMessage, setFocusMessage] = useState(false);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
   return (
     <div className=" pb-24">
       <motion.h2
@@ -15,17 +25,34 @@ const Contact = () => {
         Contact
       </motion.h2>
       <form
-        action=""
+        onSubmit={handleSubmit(onSubmit)}
         className="flex w-full justify-center flex-col gap-5 items-center"
+        noValidate
       >
         <div className="w-full flex justify-center relative">
-          <input
-            type="text"
-            placeholder="Full Name *"
-            className="p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b placeholder-white"
-            onFocus={() => setFocusName(true)}
-            onBlur={() => setFocusName(false)}
-          />
+          <div className="flex flex-col w-full items-center">
+            <input
+              type="text"
+              placeholder={
+                errors.fullName?.message
+                  ? errors.fullName?.message
+                  : "Full name *"
+              }
+              {...register("fullName", {
+                required: {
+                  value: true,
+                  message: "Full name is required.",
+                },
+              })}
+              className={`${
+                errors.fullName?.message
+                  ? "placeholder-red-500"
+                  : "placeholder-white"
+              } p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b`}
+              onFocus={() => setFocusName(true)}
+              onBlur={() => setFocusName(false)}
+            />
+          </div>
           <div
             className={`${
               focusName ? "w-full lg:w-3/4" : " w-0"
@@ -35,8 +62,24 @@ const Contact = () => {
         <div className="w-full flex justify-center relative">
           <input
             type="text"
-            placeholder="Email *"
-            className="p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b placeholder-white"
+            placeholder={
+              errors.email?.message ? errors.email?.message : "Email *"
+            }
+            {...register("email", {
+              required: {
+                value: true,
+                message: "Email is required.",
+              },
+              pattern: {
+                value: /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
+                message: "Invalid email.",
+              },
+            })}
+            className={`${
+              errors.email?.message
+                ? "placeholder-red-500"
+                : "placeholder-white"
+            } p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b`}
             onFocus={() => setFocusEmail(true)}
             onBlur={() => setFocusEmail(false)}
           />
@@ -49,11 +92,24 @@ const Contact = () => {
         <div className="w-full flex justify-center relative">
           <textarea
             type="text"
-            placeholder="Message *"
+            placeholder={
+              errors.message?.message ? errors.message?.message : "Message *"
+            }
+            {...register("message", {
+              required: {
+                value: true,
+                message: "Message is required.",
+              },
+            })}
             onFocus={() => setFocusMessage(true)}
             onBlur={() => setFocusMessage(false)}
-            className="p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b h-[300px] resize-none placeholder-white"
+            className={`${
+              errors.message?.message
+                ? "placeholder-red-500"
+                : "placeholder-white"
+            } p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b`}
           />
+
           <div
             className={`${
               focusMessage ? "w-full lg:w-3/4" : " w-0"
