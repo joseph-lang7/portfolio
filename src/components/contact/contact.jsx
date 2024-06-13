@@ -8,16 +8,17 @@ const Contact = () => {
   const [clientName, setClientName] = useState("");
   const { errors, isSubmitSuccessful } = formState;
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
     try {
       const fetchOptions = {
         method: "POST",
         body: new URLSearchParams(data).toString(),
         headers: {
-          "Content-Type": "Applications/x-www-form-urlencoded",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
       };
-      const res = await fetch("/__contact-form.html", fetchOptions);
+      const res = await fetch("/", fetchOptions);
       if (res.ok) {
         setClientName(data.fullName);
         reset();
@@ -47,6 +48,7 @@ const Contact = () => {
         className="flex w-full justify-center flex-col gap-5 items-center"
         noValidate
         name="contact-form"
+        data-netlify="true"
         onSubmit={handleSubmit(onSubmit)}
       >
         <input type="hidden" name="bot-field" />
