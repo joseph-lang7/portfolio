@@ -29,7 +29,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
             >
-              Full Stack Developer
+              Full Stack Engineer
             </motion.span>
             <motion.p
               className="my-2 max-w-xl py-6"
