@@ -5,17 +5,14 @@ import { useForm } from "react-hook-form";
 const Contact = () => {
   const form = useForm();
   const { register, formState, handleSubmit, reset } = form;
+  const [clientName, setClientName] = useState("");
   const { errors, isSubmitSuccessful } = formState;
-  const [focusName, setFocusName] = useState(false);
-  const [focusEmail, setFocusEmail] = useState(false);
-  const [focusMessage, setFocusMessage] = useState(false);
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = async (data) => {
     try {
-      if (isSubmitSuccessful) {
-        reset();
-      }
+      setClientName(data.fullName);
+      console.log("Form submitted", data);
+      reset();
     } catch (error) {
       console.error(error);
     }
@@ -30,8 +27,14 @@ const Contact = () => {
       >
         Contact
       </motion.h2>
+      {isSubmitSuccessful && (
+        <p className="text-center">
+          Thank you, <span className="capitalize">{clientName}</span>, I&apos;ll
+          reach out shortly.
+        </p>
+      )}
+
       <form
-        method="POST"
         className="flex w-full justify-center flex-col gap-5 items-center"
         noValidate
         name="contact-form"
@@ -40,43 +43,31 @@ const Contact = () => {
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact-form" />
         <div className="w-full flex justify-center relative">
-          <div className="flex flex-col w-full items-center">
+          <div className="flex w-full flex-col items-center">
             <input
               type="text"
               name="fullName"
-              placeholder={
-                errors.fullName?.message
-                  ? errors.fullName?.message
-                  : "Full name *"
-              }
+              autoComplete="off"
+              placeholder="Full name *"
               {...register("fullName", {
                 required: {
                   value: true,
                   message: "Full name is required.",
                 },
               })}
-              className={`${
-                errors.fullName?.message
-                  ? "placeholder-red-500"
-                  : "placeholder-white"
-              } p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b`}
-              onFocus={() => setFocusName(true)}
-              onBlur={() => setFocusName(false)}
+              className="p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b focus:border-b-purple-500 transition-colors duration-500"
             />
+            <p className="flex flex-start w-full lg:w-3/4 text-red-500">
+              {errors.fullName?.message}
+            </p>
           </div>
-          <div
-            className={`${
-              focusName ? "w-full lg:w-3/4" : " w-0"
-            }  absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[1px] bg-purple-500 transition-all duration-500`}
-          ></div>
         </div>
-        <div className="w-full flex justify-center relative">
+        <div className="w-full flex flex-col items-center relative">
           <input
             type="email"
             name="email"
-            placeholder={
-              errors.email?.message ? errors.email?.message : "Email *"
-            }
+            autoComplete="off"
+            placeholder="Email *"
             {...register("email", {
               required: {
                 value: true,
@@ -87,47 +78,29 @@ const Contact = () => {
                 message: "Invalid email.",
               },
             })}
-            className={`${
-              errors.email?.message
-                ? "placeholder-red-500"
-                : "placeholder-white"
-            } p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b`}
-            onFocus={() => setFocusEmail(true)}
-            onBlur={() => setFocusEmail(false)}
+            className="p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b focus:border-b-purple-500 transition-colors duration-500"
           />
-          <div
-            className={`${
-              focusEmail ? "w-full lg:w-3/4" : " w-0"
-            }  absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[1px] bg-purple-500 transition-all duration-500`}
-          ></div>
+          <p className="flex flex-start w-full lg:w-3/4 text-red-500">
+            {errors.email?.message}
+          </p>
         </div>
-        <div className="w-full flex justify-center relative">
+        <div className="w-full flex flex-col items-center relative">
           <textarea
             type="text"
             name="message"
-            placeholder={
-              errors.message?.message ? errors.message?.message : "Message *"
-            }
+            autoComplete="off"
+            placeholder="Message *"
             {...register("message", {
               required: {
                 value: true,
                 message: "Message is required.",
               },
             })}
-            onFocus={() => setFocusMessage(true)}
-            onBlur={() => setFocusMessage(false)}
-            className={`${
-              errors.message?.message
-                ? "placeholder-red-500"
-                : "placeholder-white"
-            } p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b`}
+            className="p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b focus:border-b-purple-500 transition-colors duration-500"
           />
-
-          <div
-            className={`${
-              focusMessage ? "w-full lg:w-3/4" : " w-0"
-            }  absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[1px] bg-purple-500 transition-all duration-500`}
-          ></div>
+          <p className="flex flex-start w-full lg:w-3/4 text-red-500">
+            {errors.message?.message}
+          </p>
         </div>
         <div className="w-full flex justify-center mt-5">
           <button className="px-5 py-2 bg-transparent border flex justify-center w-full lg:w-3/4 hover:bg-white hover:text-black transition-colors duration-500">
