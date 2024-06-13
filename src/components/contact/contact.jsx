@@ -28,7 +28,10 @@ const Contact = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex w-full justify-center flex-col gap-5 items-center"
         noValidate
+        data-netlify="true"
+        name="contact-form"
       >
+        <input type="hidden" name="form-name" value="contact-form" />
         <div className="w-full flex justify-center relative">
           <div className="flex flex-col w-full items-center">
             <input
@@ -61,7 +64,7 @@ const Contact = () => {
         </div>
         <div className="w-full flex justify-center relative">
           <input
-            type="text"
+            type="email"
             placeholder={
               errors.email?.message ? errors.email?.message : "Email *"
             }
