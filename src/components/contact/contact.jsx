@@ -35,6 +35,7 @@ const Contact = () => {
       )}
 
       <form
+        method="POST"
         className="flex w-full justify-center flex-col gap-5 items-center"
         noValidate
         name="contact-form"
