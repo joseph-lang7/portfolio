@@ -14,7 +14,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder="Full Name *"
-            className="p-4 w-full lg:w-1/2 bg-transparent focus:outline-none border-b"
+            className="p-4 w-full lg:w-1/2 bg-transparent focus:outline-none border-b placeholder-white"
             onFocus={() => setFocusName(true)}
             onBlur={() => setFocusName(false)}
           />
@@ -28,7 +28,7 @@ const Contact = () => {
           <input
             type="text"
             placeholder="Email *"
-            className="p-4 w-full lg:w-1/2 bg-transparent focus:outline-none border-b"
+            className="p-4 w-full lg:w-1/2 bg-transparent focus:outline-none border-b placeholder-white"
             onFocus={() => setFocusEmail(true)}
             onBlur={() => setFocusEmail(false)}
           />
@@ -44,7 +44,7 @@ const Contact = () => {
             placeholder="Message *"
             onFocus={() => setFocusMessage(true)}
             onBlur={() => setFocusMessage(false)}
-            className="p-4 w-full lg:w-1/2 bg-transparent focus:outline-none border-b h-[300px] resize-none"
+            className="p-4 w-full lg:w-1/2 bg-transparent focus:outline-none border-b h-[300px] resize-none placeholder-white"
           />
           <div
             className={`${

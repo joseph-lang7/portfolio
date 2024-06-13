@@ -4,24 +4,22 @@ import { VscGithub } from "react-icons/vsc";
 
 const Projects = () => {
   return (
-    <div className="pb-24">
+    <div className="border-b border-neutral-900 pb-24">
       <h2 className="my-20 text-center text-4xl">Projects</h2>
       <div>
         {PROJECTS.map((project, index) => (
           <div
             key={index}
-            className="py-8 border-b border-neutral-800 gap-3 flex flex-wrap justify-between"
+            className="py-8 border-b border-neutral-800 gap-3 flex flex-wrap justify-center"
           >
-            <div className="w-full lg:w-1/4">
+            <div className="w-full lg:w-3/4">
               <img
                 src={project.image}
                 alt={project.title}
-                width={500}
-                height={300}
-                className="rounded"
+                className="rounded w-full h-full object-cover"
               />
             </div>
-            <div className="w-full max-w-xl lg:w-3/4">
+            <div className="w-full lg:w-3/4">
               <h6 className="mb-2 text-2xl font-semibold">{project.title}</h6>
               <p className="mb-4 text-neutral-400">{project.description}</p>
               <div className="flex gap-2 flex-wrap">
