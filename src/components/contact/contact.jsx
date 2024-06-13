@@ -4,16 +4,21 @@ import { useForm } from "react-hook-form";
 
 const Contact = () => {
   const form = useForm();
-  const { register, handleSubmit, reset, formState } = form;
-  const { errors } = formState;
+  const { register, formState, handleSubmit, reset } = form;
+  const { errors, isSubmitSuccessful } = formState;
   const [focusName, setFocusName] = useState(false);
   const [focusEmail, setFocusEmail] = useState(false);
   const [focusMessage, setFocusMessage] = useState(false);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    event.target.submit();
-    reset();
+    try {
+      if (isSubmitSuccessful) {
+        reset();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className=" pb-24">
@@ -26,12 +31,13 @@ const Contact = () => {
         Contact
       </motion.h2>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        method="POST"
         className="flex w-full justify-center flex-col gap-5 items-center"
         noValidate
-        data-netlify="true"
         name="contact-form"
+        onSubmit={handleSubmit(onSubmit)}
       >
+        <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact-form" />
         <div className="w-full flex justify-center relative">
           <div className="flex flex-col w-full items-center">
