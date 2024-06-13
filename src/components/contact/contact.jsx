@@ -10,8 +10,9 @@ const Contact = () => {
   const [focusEmail, setFocusEmail] = useState(false);
   const [focusMessage, setFocusMessage] = useState(false);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (event) => {
+    event.preventDefault();
+    event.target.submit();
     reset();
   };
   return (
@@ -36,6 +37,7 @@ const Contact = () => {
           <div className="flex flex-col w-full items-center">
             <input
               type="text"
+              name="fullName"
               placeholder={
                 errors.fullName?.message
                   ? errors.fullName?.message
@@ -65,6 +67,7 @@ const Contact = () => {
         <div className="w-full flex justify-center relative">
           <input
             type="email"
+            name="email"
             placeholder={
               errors.email?.message ? errors.email?.message : "Email *"
             }
@@ -95,6 +98,7 @@ const Contact = () => {
         <div className="w-full flex justify-center relative">
           <textarea
             type="text"
+            name="message"
             placeholder={
               errors.message?.message ? errors.message?.message : "Message *"
             }
