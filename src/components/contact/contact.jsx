@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-
+import sendForm from "../../utils/sendForm";
 const Contact = () => {
   const form = useForm();
   const { register, formState, handleSubmit, reset } = form;
@@ -11,16 +11,9 @@ const Contact = () => {
   const onSubmit = async (data, event) => {
     event.preventDefault();
     try {
-      const fetchOptions = {
-        method: "POST",
-        body: new URLSearchParams(data).toString(),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      };
-      const res = await fetch("/", fetchOptions);
+      const res = await sendForm("contact-form", data);
+      setClientName(data.fullName);
       if (res.ok) {
-        setClientName(data.fullName);
         reset();
       }
     } catch (error) {
