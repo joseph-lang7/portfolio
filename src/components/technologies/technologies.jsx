@@ -3,7 +3,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { SiMongodb } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
 import { FaNodeJs } from "react-icons/fa";
-import { FaDocker } from "react-icons/fa";
+import { SiTailwindcss } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const iconVariants = (duration) => ({
@@ -66,7 +66,7 @@ const Technologies = () => {
           animate="animate"
           className="rounded-2xl border-4 border-neutral-800 p-4"
         >
-          <FaDocker className="text-7xl text-blue-500" />
+          <SiTailwindcss className="text-7xl text-[#0eb8d5]" />
         </motion.div>
         <motion.div
           variants={iconVariants(6)}
