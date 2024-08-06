@@ -3,7 +3,7 @@ import gymUnity from "/project-images/gym-unity.png";
 import hotel from "/project-images/hotel.png";
 import recipe from "/project-images/recipe.png";
 import bookAway from "/project-images/book-away.png";
-
+import sassLandingPage from "/project-images/sass-landing-page.png";
 export const HERO_TEXT =
   "I am a passionate full stack engineer from California. I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, and MongoDB.";
 
@@ -19,22 +19,38 @@ export const PROJECTS = [
     technologies: [
       "React",
       "Vite",
-      "Tailwind",
+      "Tailwind CSS",
       "TypeScript",
       "Node.js",
       "MongoDB",
       "Stripe",
       "Playwright",
+      "Express.js",
     ],
     liveDemo: { title: "Live Demo", href: "https://bookaway-jl.netlify.app/" },
     repo: { title: "Code", href: "https://github.com/joseph-lang7/Book-Away" },
   },
   {
+    title: "SaaS Landing Page",
+    image: sassLandingPage,
+    description:
+      "A front-end application that allows users to explore SaaS product details.",
+    technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
+    liveDemo: {
+      title: "Live Demo",
+      href: "https://sass-landing-page-jl.netlify.app/",
+    },
+    repo: {
+      title: "Code",
+      href: "https://github.com/joseph-lang7/SaaS-Landing-Page",
+    },
+  },
+  {
     title: "Gym Unity",
     image: gymUnity,
     description:
-      "A user interface application that allows users to view class schedules, membership options, and other resources to help them achieve their fitness goals.",
-    technologies: ["React", "Vite", "Tailwind", "JavaScript"],
+      "A front-end application that allows users to view class schedules, membership options, and other resources to help them achieve their fitness goals.",
+    technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
     liveDemo: { title: "Live Demo", href: "https://gymunity-jl.netlify.app/" },
     repo: { title: "Code", href: "https://github.com/joseph-lang7/Gym-Unity" },
   },
@@ -42,8 +58,8 @@ export const PROJECTS = [
     title: "Car Rental",
     image: carRental,
     description:
-      "A user interface application that allows users to rent, search, compare, and reserve cars.",
-    technologies: ["React", "Vite", "Tailwind", "JavaScript"],
+      "A front-end application that allows users to rent, search, compare, and reserve cars.",
+    technologies: ["React", "Vite", "Tailwind CSS", "JavaScript"],
     liveDemo: { title: "Live Demo", href: "https://carrental-jl.netlify.app/" },
     repo: { title: "Code", href: "https://github.com/joseph-lang7/Car-Rental" },
   },
@@ -51,8 +67,8 @@ export const PROJECTS = [
     title: "Hotel",
     image: hotel,
     description:
-      "A user interface application that allows users to book hotels and view hotel rooms and amenities.",
-    technologies: ["Next.js", "Tailwind", "JavaScript"],
+      "A front-end application that allows users to book hotels and view hotel rooms and amenities.",
+    technologies: ["Next.js", "Tailwind CSS", "JavaScript"],
     liveDemo: { title: "Live Demo", href: "https://hotel-jl.netlify.app/" },
     repo: { title: "Code", href: "https://github.com/joseph-lang7/Hotel" },
   },
@@ -63,8 +79,8 @@ export const PROJECTS = [
       "A full-stack app that allows users to log in/sign up and view, create, and save recipes.",
     technologies: [
       "React",
-      "Tailwind",
-      "Express",
+      "Tailwind CSS",
+      "Express.js",
       "Node.js",
       "MongoDB",
       "JavaScript",
