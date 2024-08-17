@@ -100,7 +100,7 @@ const Contact = () => {
                 message: "Message is required.",
               },
             })}
-            className="p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b focus:border-b-purple-500 transition-colors duration-500"
+            className="p-4 w-full lg:w-3/4 bg-transparent focus:outline-none border-b focus:border-b-purple-500 transition-colors duration-500 h-[300px] resize-none"
           />
           <p className="flex flex-start w-full lg:w-3/4 text-red-500">
             {errors.message?.message}
